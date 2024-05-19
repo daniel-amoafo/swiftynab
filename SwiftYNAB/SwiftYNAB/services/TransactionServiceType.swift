@@ -18,6 +18,13 @@ protocol TransactionServiceType {
         lastKnowledgeOfServer: Int?
     ) async throws -> [TransactionDetail]
 
+    func getTransactionsWithServerKnowledge(
+        budgetId: String,
+        sinceDate: Date?,
+        type: TransactionType?,
+        lastKnowledgeOfServer: Int?
+    ) async throws ->  (transactions: [TransactionDetail], serverKnowledge: Int)
+
     func getTransactions(
         budgetId: String,
         accountId: String,

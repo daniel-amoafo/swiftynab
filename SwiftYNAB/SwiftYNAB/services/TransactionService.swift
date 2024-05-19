@@ -51,6 +51,31 @@ extension TransactionService: TransactionServiceType {
         type: TransactionType? = nil,
         lastKnowledgeOfServer: Int? = nil
     ) async throws -> [TransactionDetail] {
+        try await getTransactionsWithServerKnowledge(
+            budgetId: budgetId,
+            sinceDate: sinceDate,
+            type: type,
+            lastKnowledgeOfServer: lastKnowledgeOfServer
+        ).transactions
+    }
+
+    /// Returns all transactions for a budget.
+    ///
+    /// - Parameters:
+    ///    - budgetId: The id of the budget (*last_used* can also be used to specify the last used budget)
+    ///    - sinceDate: If specified, only transactions on or after this date will be included. The date should be ISO formatted
+    ///    (e.g. 2016-12-30).
+    ///    - type: If specified, only transactions of the specified type will be included.
+    ///    - lastKnowledgeOfServer: The starting server knowledge. If provided, only entities that
+    ///    have changed since `lastKnowledgeOfServer` will be included.
+    ///
+    /// - Returns: A list of transactions & serverKnowledge
+    public func getTransactionsWithServerKnowledge(
+        budgetId: String,
+        sinceDate: Date?,
+        type: TransactionType?,
+        lastKnowledgeOfServer: Int?
+    ) async throws -> (transactions: [TransactionDetail], serverKnowledge: Int) {
         let request = TransactionsByBudgetRequest(
             budgetId: budgetId,
             sinceDate: sinceDate,
@@ -58,7 +83,7 @@ extension TransactionService: TransactionServiceType {
             lastKnowledgeOfServer: lastKnowledgeOfServer
         )
         let response: TransactionsResponse = try await client.request(request)
-        return response.transactions
+        return (response.transactions, response.serverKnowledge)
     }
 
     /// Returns all transactions for an account.
