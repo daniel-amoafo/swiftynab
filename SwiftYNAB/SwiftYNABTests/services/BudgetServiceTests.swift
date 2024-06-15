@@ -30,7 +30,8 @@ class BudgetServiceTests: XCTestCase {
             firstMonth: "january",
             lastMonth: "december",
             dateFormat: dateFormat,
-            currencyFormat: currencyFormat
+            currencyFormat: currencyFormat, 
+            accounts: []
         )
         let expectedResponse = BudgetSummaryResponse(budgets: [expectedBudget])
         let client = MockSuccessClient(expectedResponse: expectedResponse)

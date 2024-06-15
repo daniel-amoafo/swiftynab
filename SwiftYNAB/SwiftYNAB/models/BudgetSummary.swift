@@ -30,4 +30,7 @@ public struct BudgetSummary: Codable, Equatable {
 
     /// Currency formatting settings
     public let currencyFormat: CurrencyFormat
+
+    /// Accounts belonging to the budget
+    public let accounts: [Account]
 }

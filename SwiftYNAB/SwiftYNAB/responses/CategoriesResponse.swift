@@ -10,4 +10,5 @@ import Foundation
 
 struct CategoriesResponse: Codable {
     let categoryGroups: [CategoryGroupWithCategories]
+    let serverKnowledge: Int
 }

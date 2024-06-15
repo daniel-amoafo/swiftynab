@@ -21,8 +21,8 @@ extension BudgetService: BudgetServiceType {
     /// Returns budgets list with summary information.
     ///
     /// - Returns: A list of budgets
-    public func getBudgets() async throws -> [BudgetSummary] {
-        let request = BudgetSummaryRequest()
+    public func getBudgets(includeAccounts: Bool? = nil) async throws -> [BudgetSummary] {
+        let request = BudgetSummaryRequest(includeAccounts: includeAccounts)
         let response: BudgetSummaryResponse = try await client.request(request)
         return response.budgets
     }

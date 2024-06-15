@@ -9,7 +9,7 @@
 import Foundation
 
 protocol BudgetServiceType {
-    func getBudgets() async throws -> [BudgetSummary]
+    func getBudgets(includeAccounts: Bool?) async throws -> [BudgetSummary]
 
     func getBudget(budgetId: String, lastKnowledgeOfServer: Int?) async throws -> BudgetDetail
 

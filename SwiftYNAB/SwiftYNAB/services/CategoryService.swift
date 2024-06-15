@@ -32,13 +32,13 @@ extension CategoryService: CategoryServiceType {
     public func getCategories(
         budgetId: String,
         lastKnowledgeOfServer: Int? = nil
-    ) async throws -> [CategoryGroupWithCategories] {
+    ) async throws -> ([CategoryGroupWithCategories], serverKnowledge: Int) {
         let request = CategoriesRequest(
             budgetId: budgetId,
             lastKnowledgeOfServer: lastKnowledgeOfServer
         )
         let response: CategoriesResponse = try await client.request(request)
-        return response.categoryGroups
+        return (response.categoryGroups, response.serverKnowledge)
     }
 
     /// Returns a single category.

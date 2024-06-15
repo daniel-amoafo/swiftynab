@@ -19,13 +19,13 @@ class CategoryServiceTests: XCTestCase {
             deleted: false,
             categories: []
         )
-        let expectedResponse = CategoriesResponse(categoryGroups: [expectedCategoryGroup])
+        let expectedResponse = CategoriesResponse(categoryGroups: [expectedCategoryGroup], serverKnowledge: 0)
         let client = MockSuccessClient(expectedResponse: expectedResponse)
         let service = CategoryService(client: client)
         let actualResponse = try await service.getCategories(budgetId: "budget_id")
 
-        XCTAssertEqual(actualResponse.count, 1)
-        XCTAssertEqual(expectedCategoryGroup, actualResponse[0])
+        XCTAssertEqual(actualResponse.0.count, 1)
+        XCTAssertEqual(expectedCategoryGroup, actualResponse.0[0])
     }
 
     func testGetCategoriesThrowsErrorWhenRequestFails() async throws {

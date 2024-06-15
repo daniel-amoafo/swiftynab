@@ -10,7 +10,7 @@ import Foundation
 
 protocol CategoryServiceType {
     func getCategories(budgetId: String, lastKnowledgeOfServer: Int?) async throws
-        -> [CategoryGroupWithCategories]
+        -> ([CategoryGroupWithCategories], serverKnowledge: Int)
 
     func getCategory(budgetId: String, categoryId: String) async throws -> Category
 
