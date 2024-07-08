@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TransactionsByPayeeRequest {
+struct TransactionsByPayeeRequest: Sendable {
     let budgetId: String
     let payeeId: String
     let sinceDate: Date?

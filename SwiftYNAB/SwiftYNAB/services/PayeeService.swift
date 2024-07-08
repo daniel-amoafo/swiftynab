@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to payee operations
-public class PayeeService {
+public struct PayeeService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

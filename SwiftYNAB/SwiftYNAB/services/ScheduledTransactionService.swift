@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to scheduled transaction operations
-public class ScheduledTransactionService {
+public struct ScheduledTransactionService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol URLSessionType {
+protocol URLSessionType: Sendable {
     func data(for request: URLRequest, delegate: URLSessionTaskDelegate?) async throws
         -> (Data, URLResponse)
 }

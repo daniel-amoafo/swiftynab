@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Client {
+final class Client: Sendable {
     private let authorizationHeader: String
     private let urlSession: URLSessionType
     private let serializer: SerializerType

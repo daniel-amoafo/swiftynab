@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SerializerType {
+protocol SerializerType: Sendable {
     func decode<T: Codable>(_: T.Type, from data: Data) throws -> T
     func encode<T: Codable>(_ model: T) throws -> Data
 }

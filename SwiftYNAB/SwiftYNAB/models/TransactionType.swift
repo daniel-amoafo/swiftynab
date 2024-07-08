@@ -9,7 +9,7 @@
 import Foundation
 
 /// Supported transaction types by the API
-public enum TransactionType: String {
+public enum TransactionType: String, Sendable {
     /// Unapproved transaction
     case unapproved
 

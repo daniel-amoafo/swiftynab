@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to category operations
-public class CategoryService {
+public struct CategoryService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

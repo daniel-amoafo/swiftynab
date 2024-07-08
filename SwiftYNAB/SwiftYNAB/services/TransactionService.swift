@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to transaction operations
-public class TransactionService {
+public struct TransactionService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

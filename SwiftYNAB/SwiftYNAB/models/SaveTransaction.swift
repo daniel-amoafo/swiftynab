@@ -17,7 +17,7 @@ public typealias NewTransaction = SaveTransaction
 public typealias UpdateTransaction = SaveTransaction
 
 /// Model used for creating and updating transactions
-public struct SaveTransaction: Codable {
+public struct SaveTransaction: Codable, Sendable {
     /// Transaction id.  Should be `nil` if this is a new transaction.  Should have a valid id for updating a transaction.
     public var id: String?
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Request {
+protocol Request: Sendable {
     var path: String { get }
     var method: RequestMethod { get }
     var requiresAuthentication: Bool { get }

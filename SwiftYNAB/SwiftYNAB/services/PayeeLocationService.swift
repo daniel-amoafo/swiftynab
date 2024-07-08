@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to payee location operations
-public class PayeeLocationService {
+public struct PayeeLocationService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

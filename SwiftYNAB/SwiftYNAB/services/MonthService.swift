@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to month operations
-public class MonthService {
+public struct MonthService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

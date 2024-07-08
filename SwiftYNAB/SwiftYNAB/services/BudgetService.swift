@@ -9,7 +9,7 @@
 import Foundation
 
 /// Provides access to account operations
-public class BudgetService {
+public struct BudgetService: Sendable {
     private let client: ClientType
 
     init(client: ClientType) {

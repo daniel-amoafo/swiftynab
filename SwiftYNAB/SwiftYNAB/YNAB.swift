@@ -9,35 +9,35 @@
 import Foundation
 
 /// YNAB API client
-public class YNAB {
+public struct YNAB: Sendable {
     private let client: ClientType
 
     /// Provides access to user operations
-    public lazy var users = UserService(client: client)
+    public let users: UserService
 
     /// Provides access to budget operations
-    public lazy var budgets = BudgetService(client: client)
+    public let budgets: BudgetService
 
     /// Provides access to account operations
-    public lazy var accounts = AccountService(client: client)
+    public let accounts: AccountService
 
     /// Provides access to category operations
-    public lazy var categories = CategoryService(client: client)
+    public let categories: CategoryService
 
     /// Provides access to payee operations
-    public lazy var payees = PayeeService(client: client)
+    public let payees: PayeeService
 
     /// Provides access to payee location operations
-    public lazy var payeeLocations = PayeeLocationService(client: client)
+    public let payeeLocations: PayeeLocationService
 
     /// Provides access to month operations
-    public lazy var months = MonthService(client: client)
+    public let months: MonthService
 
     /// Provides access to transaction operations
-    public lazy var transactions = TransactionService(client: client)
+    public let transactions: TransactionService
 
     /// Provides access to scheduled transaction operations
-    public lazy var scheduledTransactions = ScheduledTransactionService(client: client)
+    public let scheduledTransactions: ScheduledTransactionService
 
     /// Initializes the YNAB API client
     ///
@@ -50,5 +50,14 @@ public class YNAB {
             urlSession: urlSession,
             serializer: Serializer.shared
         )
+        self.users = UserService(client: client)
+        self.budgets = BudgetService(client: client)
+        self.accounts = AccountService(client: client)
+        self.categories = CategoryService(client: client)
+        self.payees = PayeeService(client: client)
+        self.payeeLocations = PayeeLocationService(client: client)
+        self.months = MonthService(client: client)
+        self.transactions = TransactionService(client: client)
+        self.scheduledTransactions = ScheduledTransactionService(client: client)
     }
 }

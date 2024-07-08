@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ClientType {
+protocol ClientType: Sendable {
     func request<T: Codable>(_ request: Request) async throws -> T
 }
